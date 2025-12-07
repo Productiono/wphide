@@ -35,9 +35,12 @@ class HMWP_Models_Compatibility {
 	 * @return void
 	 * @throws Exception
 	 */
-	public function checkCompatibility() {
+        public function checkCompatibility() {
 
-		$compatibilities = array(
+                // Ensure the base compatibility class is available before loading any other compatibility handlers.
+                HMWP_Classes_ObjController::getClass( 'HMWP_Models_Compatibility_Abstract' );
+
+                $compatibilities = array(
 			'really-simple-ssl/rlrsssl-really-simple-ssl.php'                               => 'HMWP_Models_Compatibility_ReallySimpleSsl',
 			'nitropack/main.php'                                                            => 'HMWP_Models_Compatibility_Nitropack',
 			'hummingbird-performance/wp-hummingbird.php'                                    => 'HMWP_Models_Compatibility_Hummingbird',
