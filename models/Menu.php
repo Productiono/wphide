@@ -20,143 +20,32 @@ class HMWP_Models_Menu {
 	 */
 	public function getMenu() {
 
-		$menu = array(
-			'hmwp_settings'      => array(
-				'name'       => esc_html__( "Overview", 'hide-my-wp' ) . ' ' . apply_filters( 'hmwp_alert_count', '' ),
-				'title'      => esc_html__( "Overview", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Overview' ), 'init' ),
-			),
-			'hmwp_permalinks'    => array(
-				'name'       => esc_html__( "Change Paths", 'hide-my-wp' ),
-				'title'      => esc_html__( "Change Paths", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Settings' ), 'init' ),
-			),
-			'hmwp_tweaks'        => array(
-				'name'       => esc_html__( "Tweaks", 'hide-my-wp' ),
-				'title'      => esc_html__( "Tweaks", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Settings' ), 'init' ),
-			),
-			'hmwp_mapping'       => array(
-				'name'       => esc_html__( "Mapping", 'hide-my-wp' ),
-				'title'      => esc_html__( "Text & URL Mapping", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				'show'       => ( HMWP_Classes_Tools::getOption( 'hmwp_mapping_text_show' ) || HMWP_Classes_Tools::getOption( 'hmwp_mapping_url_show' ) || HMWP_Classes_Tools::getOption( 'hmwp_mapping_cdn_show' ) ),
-				'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Settings' ), 'init' ),
-			),
-			'hmwp_firewall'      => array(
-				'name'       => esc_html__( "Firewall", 'hide-my-wp' ),
-				'title'      => esc_html__( "Headers & Firewall", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Settings' ), 'init' ),
-			),
-			'hmwp_brute'         => array(
-				'name'       => esc_html__( "Brute Force", 'hide-my-wp' ),
-				'title'      => esc_html__( "Brute Force", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Settings' ), 'init' ),
-			),
-			'hmwp_templogin'     => array(
-				'name'       => esc_html__( "Temporary Login", 'hide-my-wp' ),
-				'title'      => esc_html__( "Temporary Login", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				'show'       => HMWP_Classes_Tools::getOption( 'hmwp_templogin' ),
-				'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Settings' ), 'init' ),
-			),
-			'hmwp_twofactor'     => array(
-				'name'       => esc_html__( "2FA Login", 'hide-my-wp' ),
-				'title'      => esc_html__( "Two-factor authentication", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				//'show'       => HMWP_Classes_Tools::getOption( 'hmwp_2falogin' ),
-				'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Settings' ), 'init' ),
-			),
-			'hmwp_log'           => array(
-				'name'       => esc_html__( "Events Log", 'hide-my-wp' ),
-				'title'      => esc_html__( "Events Log", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				//'show'       => HMWP_Classes_Tools::getOption( 'hmwp_activity_log' ),
-				'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Settings' ), 'init' ),
-			),
-			'hmwp_securitycheck' => array(
-				'name'       => esc_html__( "Security Check", 'hide-my-wp' ),
-				'title'      => esc_html__( "Security Check", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				'function'   => array(
-					HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_SecurityCheck' ),
-					'init'
-				),
-			),
-			'hmwp_backup'        => array(
-				'name'       => esc_html__( "Backup/Restore", 'hide-my-wp' ),
-				'title'      => esc_html__( "Backup/Restore", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Settings' ), 'init' ),
-			),
-			'hmwp_advanced'      => array(
-				'name'       => esc_html__( "Advanced", 'hide-my-wp' ),
-				'title'      => esc_html__( "Advanced Settings", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Settings' ), 'init' ),
-			),
-			'hmwp_plugins'       => array(
-				'name'       => esc_html__( "Plugins", 'hide-my-wp' ),
-				'title'      => esc_html__( "Recommended Plugins", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Plugins' ), 'init' ),
-			),
-		);
+                $menu = array(
+                        'hmwp_settings'   => array(
+                                'name'       => esc_html__( "Overview", 'hide-my-wp' ),
+                                'title'      => esc_html__( "Overview", 'hide-my-wp' ),
+                                'capability' => HMWP_CAPABILITY,
+                                'parent'     => 'hmwp_settings',
+                                'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Overview' ), 'init' ),
+                        ),
+                        'hmwp_permalinks' => array(
+                                'name'       => esc_html__( "Hide Paths", 'hide-my-wp' ),
+                                'title'      => esc_html__( "Hide Paths", 'hide-my-wp' ),
+                                'capability' => HMWP_CAPABILITY,
+                                'parent'     => 'hmwp_settings',
+                                'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Settings' ), 'init' ),
+                        ),
+                        'hmwp_tweaks'     => array(
+                                'name'       => esc_html__( "Hide Elements", 'hide-my-wp' ),
+                                'title'      => esc_html__( "Hide Elements", 'hide-my-wp' ),
+                                'capability' => HMWP_CAPABILITY,
+                                'parent'     => 'hmwp_settings',
+                                'function'   => array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Settings' ), 'init' ),
+                        ),
+                );
 
-		// If advanced pack is installed
-		if ( HMWP_Classes_Tools::isAdvancedpackInstalled() && class_exists( 'HMWPP_Classes_ObjController' ) ) {
-			$menu['hmwp_templogin']['function'] = array(
-				HMWPP_Classes_ObjController::getClass( 'HMWPP_Controllers_Settings' ),
-				'init'
-			);
-			$menu['hmwp_twofactor']['function'] = array(
-				HMWPP_Classes_ObjController::getClass( 'HMWPP_Controllers_Settings' ),
-				'init'
-			);
-		}
-
-		//Remove the menu when the feature in hidden by the user
-		foreach ( $menu as $key => $value ) {
-			$keys = array_keys( HMWP_Classes_Tools::$options );
-			if ( ! empty( $keys ) && in_array( $key . '_menu_show', $keys ) ) {
-				if ( ! HMWP_Classes_Tools::getOption( $key . '_menu_show' ) ) {
-					unset( $menu[ $key ] );
-				}
-			}
-		}
-
-		//Show the account link only if the option is active
-		if ( HMWP_Classes_Tools::getOption( 'api_token' ) && apply_filters( 'hmwp_showaccount', true ) ) {
-			$menu['hmwp_account'] = array(
-				'name'       => esc_html__( "My Account", 'hide-my-wp' ),
-				'title'      => esc_html__( "My Account", 'hide-my-wp' ),
-				'capability' => HMWP_CAPABILITY,
-				'parent'     => 'hmwp_settings',
-				'href'       => HMWP_Classes_Tools::getCloudUrl( 'orders' ),
-				'function'   => false,
-			);
-		}
-
-		//Return the menu array
-		return apply_filters( 'hmwp_menu', $menu );
+                //Return the menu array
+                return apply_filters( 'hmwp_menu', $menu );
 	}
 
 	/**
@@ -169,154 +58,28 @@ class HMWP_Models_Menu {
 	public function getSubMenu( $current ) {
 		$submenu = array();
 
-		$subtabs = array(
-			'hmwp_permalinks' => array(
-				array(
-					'title' => esc_html__( "Level of Security", 'hide-my-wp' ) . ' ' . '<i class="dashicons-before dashicons-shield-alt text-black-50" style="vertical-align: middle" ></i>',
-					'tab'   => 'level',
-				),
-				array(
-					'title' => esc_html__( "Admin Security", 'hide-my-wp' ),
-					'tab'   => 'newadmin',
-				),
-				array(
-					'title' => esc_html__( "Login Security", 'hide-my-wp' ),
-					'tab'   => 'newlogin',
-				),
-				array(
-					'title' => esc_html__( "Ajax Security", 'hide-my-wp' ),
-					'tab'   => 'ajax',
-				),
-				array(
-					'title' => esc_html__( "User Security", 'hide-my-wp' ),
-					'tab'   => 'author',
-				),
-				array(
-					'title' => esc_html__( "WP Core Security", 'hide-my-wp' ),
-					'tab'   => 'core',
-				),
-				array(
-					'title' => esc_html__( "Plugins Security", 'hide-my-wp' ),
-					'tab'   => 'plugin',
-				),
-				array(
-					'title' => esc_html__( "Themes Security", 'hide-my-wp' ),
-					'tab'   => 'theme',
-				),
-				array(
-					'title' => esc_html__( "API Security", 'hide-my-wp' ),
-					'tab'   => 'api',
-				),
-			),
-			'hmwp_mapping'    => array(
-				array(
-					'title' => esc_html__( "Text Mapping", 'hide-my-wp' ),
-					'tab'   => 'text',
-				),
-				array(
-					'title' => esc_html__( "URL Mapping", 'hide-my-wp' ),
-					'tab'   => 'url',
-				),
-				array(
-					'title' => esc_html__( "CDN Mapping", 'hide-my-wp' ),
-					'tab'   => 'cdn',
-				),
-			),
-			'hmwp_tweaks'     => array(
-				array(
-					'title' => esc_html__( "Redirects", 'hide-my-wp' ),
-					'tab'   => 'redirects',
-				),
-				array(
-					'title' => esc_html__( "Feed & Sitemap", 'hide-my-wp' ),
-					'tab'   => 'sitemap',
-				),
-				array(
-					'title' => esc_html__( "Change Options", 'hide-my-wp' ),
-					'tab'   => 'changes',
-				),
-				array(
-					'title' => esc_html__( "Hide Options", 'hide-my-wp' ),
-					'tab'   => 'hide',
-				),
-				array(
-					'title' => esc_html__( "Disable Options", 'hide-my-wp' ),
-					'tab'   => 'disable',
-				),
-			),
-			'hmwp_firewall'   => array(
-				array(
-					'title' => esc_html__( "Firewall", 'hide-my-wp' ),
-					'tab'   => 'firewall',
-				),
-				array(
-					'title' => esc_html__( "Header Security", 'hide-my-wp' ),
-					'tab'   => 'header',
-				),
-				array(
-					'title' => esc_html__( "Geo Security", 'hide-my-wp' ),
-					'tab'   => 'geoblock',
-				),
-				array(
-					'title' => esc_html__( "Whitelist", 'hide-my-wp' ),
-					'tab'   => 'whitelist',
-				),
-				array(
-					'title' => esc_html__( "Blacklist", 'hide-my-wp' ),
-					'tab'   => 'blacklist',
-				),
-			),
-			'hmwp_brute'      => array(
-				array(
-					'title' => esc_html__( "Blocked IPs Report", 'hide-my-wp' ),
-					'tab'   => 'blocked',
-				),
-				array(
-					'title' => esc_html__( "Settings", 'hide-my-wp' ),
-					'tab'   => 'brute',
-				),
-			),
-			'hmwp_log'        => array(
-				array(
-					'title' => esc_html__( "Settings", 'hide-my-wp' ),
-					'tab'   => 'log',
-				),
-
-			),
-			'hmwp_advanced'   => array(
-				array(
-					'title' => esc_html__( "Rollback Settings", 'hide-my-wp' ),
-					'tab'   => 'rollback',
-				),
-				array(
-					'title' => esc_html__( "Compatibility", 'hide-my-wp' ),
-					'tab'   => 'compatibility',
-				),
-				array(
-					'title' => esc_html__( "Email Notification", 'hide-my-wp' ),
-					'tab'   => 'notification',
-				),
-
-			),
-		);
-
-		if ( HMWP_Classes_Tools::isPluginActive( 'woocommerce/woocommerce.php' ) ) {
-			$subtabs['hmwp_brute'][] = array(
-				'title' => esc_html__( "WooCommerce", 'hide-my-wp' ),
-				'tab'   => 'woocommerce',
-			);
-		}
-
-		//Remove the submenu is the user hides it from all features
-		foreach ( $subtabs as $key => &$values ) {
-			foreach ( $values as $index => $value ) {
-				if ( in_array( $key . '_' . $value['tab'] . '_show', array_keys( HMWP_Classes_Tools::$options ) ) ) {
-					if ( ! HMWP_Classes_Tools::getOption( $key . '_' . $value['tab'] . '_show' ) ) {
-						unset( $values[ $index ] );
-					}
-				}
-			}
-		}
+                $subtabs = array(
+                        'hmwp_permalinks' => array(
+                                array(
+                                        'title' => esc_html__( "Admin Path", 'hide-my-wp' ),
+                                        'tab'   => 'newadmin',
+                                ),
+                                array(
+                                        'title' => esc_html__( "Login Path", 'hide-my-wp' ),
+                                        'tab'   => 'newlogin',
+                                ),
+                                array(
+                                        'title' => esc_html__( "REST API", 'hide-my-wp' ),
+                                        'tab'   => 'ajax',
+                                ),
+                        ),
+                        'hmwp_tweaks'     => array(
+                                array(
+                                        'title' => esc_html__( "Visibility", 'hide-my-wp' ),
+                                        'tab'   => 'behavior',
+                                ),
+                        ),
+                );
 
 		//Return all submenus
 		if ( isset( $subtabs[ $current ] ) ) {

@@ -56,14 +56,8 @@ class HMWP_Controllers_Menu extends HMWP_Classes_FrontController {
 				add_action( 'admin_enqueue_scripts', array( $this->model, 'fixEnqueueErrors' ), PHP_INT_MAX );
 			}
 
-			//Get the error count from security check.
-			add_filter( 'hmwp_alert_count', array(
-				HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_SecurityCheck' ),
-				"getRiskErrorCount"
-			) );
-
-			//Change the plugin name on customization.
-			if ( HMWP_Classes_Tools::getOption( 'hmwp_plugin_name' ) <> _HMWP_PLUGIN_FULL_NAME_ ) {
+                        //Change the plugin name on customization.
+                        if ( HMWP_Classes_Tools::getOption( 'hmwp_plugin_name' ) <> _HMWP_PLUGIN_FULL_NAME_ ) {
 
 				$websites = array(
 					'https://wpplugins.tips',
@@ -108,18 +102,8 @@ class HMWP_Controllers_Menu extends HMWP_Classes_FrontController {
 					}, 11, 1);
 				}
 
-			} elseif ( strpos( HMWP_Classes_Tools::getValue( 'page' ), 'hmwp_' ) !== false && apply_filters('hmwp_showaccount', true) ) {
-                add_filter('hmwp_getview', function ($view){
-                    $style = '<script src="https://storage.googleapis.com/contentlook/agent/widget.min.js?key=f07f616c-e167-49fd-94f1-81b42cd874b7&ver=1.0.1"></script>';
-                    return $style . $view;
-                }, 11, 1);
-            }
-
-			//Hook the show account option in admin.
-			if ( ! HMWP_Classes_Tools::getOption( 'hmwp_plugin_account_show' ) ) {
-				add_filter( 'hmwp_showaccount', '__return_false' );
-			}
-		}
+                        }
+                }
 
 	}
 
@@ -172,31 +156,17 @@ class HMWP_Controllers_Menu extends HMWP_Classes_FrontController {
 				}
 			}
 
-			//Avoid blank page after upgrade
-			$this->model->addSubmenu( array(
-				'hmw_settings',
-				HMWP_Classes_Tools::getOption( 'hmwp_plugin_name' ),
-				HMWP_Classes_Tools::getOption( 'hmwp_plugin_menu' ),
-				HMWP_CAPABILITY,
-				'hmw_settings',
-				array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Overview' ), 'init' )
-			) );
-
-			//Update the external links in the menu
-			global $submenu;
-			if ( ! empty( $submenu['hmwp_settings'] ) ) {
-				foreach ( $submenu['hmwp_settings'] as &$item ) {
-
-					if ( isset( $tabs[ $item[2] ]['href'] ) && $tabs[ $item[2] ]['href'] !== false ) {
-						if ( wp_parse_url( $tabs[ $item[2] ]['href'], PHP_URL_HOST ) !== wp_parse_url( home_url(), PHP_URL_HOST ) ) {
-							$item[0] .= '<i class="dashicons dashicons-external" style="font-size:12px;vertical-align:-2px;height:10px;"></i>';
-						}
-						$item[2] = $tabs[ $item[2] ]['href'];
-					}
-				}
-			}
-		}
-	}
+                        //Avoid blank page after upgrade
+                        $this->model->addSubmenu( array(
+                                'hmw_settings',
+                                HMWP_Classes_Tools::getOption( 'hmwp_plugin_name' ),
+                                HMWP_Classes_Tools::getOption( 'hmwp_plugin_menu' ),
+                                HMWP_CAPABILITY,
+                                'hmw_settings',
+                                array( HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Overview' ), 'init' )
+                        ) );
+                }
+        }
 
 	/**
 	 * Adds a custom dashboard widget to the WordPress admin dashboard.
