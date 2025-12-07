@@ -65,14 +65,12 @@ class HMWP_Classes_FrontController {
 			HMWP_Classes_ObjController::getClass( 'HMWP_Classes_Debug' );
 		}
 
-		// Load the rewrite
-		HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Rewrite' );
+                // Load the rewrite
+                HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Rewrite' );
 
-		// Load the Main classes Actions Handler
-		HMWP_Classes_ObjController::getClass( 'HMWP_Classes_Action' );
-		HMWP_Classes_ObjController::getClass( 'HMWP_Classes_DisplayController' );
-		HMWP_Classes_ObjController::getClass( 'HMWP_Models_Compatibility_Abstract' );
-		HMWP_Classes_ObjController::getClass( 'HMWP_Models_Bruteforce_Abstract' );
+                // Load the Main classes Actions Handler
+                HMWP_Classes_ObjController::getClass( 'HMWP_Classes_Action' );
+                HMWP_Classes_ObjController::getClass( 'HMWP_Classes_DisplayController' );
 
 	}
 

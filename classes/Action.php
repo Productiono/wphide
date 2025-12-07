@@ -63,104 +63,22 @@ class HMWP_Classes_Action extends HMWP_Classes_FrontController {
 	 * @since 6.1.1
 	 */
 	public function getActionsTable() {
-		return array(
-			array(
-				"name"    => "HMWP_Controllers_Settings",
-				"actions" => array(
-					"action" => array(
-						"hmwp_settings",
-						"hmwp_tweakssettings",
-						"hmwp_confirm",
-						"hmwp_newpluginschange",
-						"hmwp_abort",
-						"hmwp_ignore_errors",
-						"hmwp_restore_settings",
-						"hmwp_manualrewrite",
-						"hmwp_mappsettings",
-						"hmwp_firewall",
-						"hmwp_advsettings",
-						"hmwp_devsettings",
-						"hmwp_devdownload",
-						"hmwp_changepathsincache",
-						"hmwp_savecachepath",
-						"hmwp_backup",
-						"hmwp_restore",
-						"hmwp_rollback",
-						"hmwp_rollback_stable",
-						"hmwp_download_settings",
-						"hmwp_advanced_install",
-						"hmwp_pause_enable",
-						"hmwp_pause_disable",
-						"hmwp_update_product_name",
-					)
-				),
-			),
-			array(
-				"name"    => "HMWP_Controllers_Overview",
-				"actions" => array(
-					"action" => array(
-						"hmwp_feature_save"
-					)
-				),
-			),
-			array(
-				"name"    => "HMWP_Controllers_SecurityCheck",
-				"actions" => array(
-					"action" => array(
-						"hmwp_securitycheck",
-						"hmwp_frontendcheck",
-						"hmwp_fixsettings",
-						"hmwp_fixconfig",
-						"hmwp_securityexclude",
-						"hmwp_resetexclude"
-					)
-				),
-			),
-			array(
-				"name"    => "HMWP_Controllers_Brute",
-				"actions" => array(
-					"action" => array(
-						"hmwp_brutesettings",
-						"hmwp_google_enterprise",
-						"hmwp_blockedips",
-						"hmwp_deleteip",
-						"hmwp_deleteallips"
-					)
-				),
-			),
-			array(
-				"name"    => "HMWP_Controllers_Log",
-				"actions" => array(
-					"action" => array(
-						"hmwp_logsettings"
-					)
-				),
-			),
-			array(
-				"name"    => "HMWP_Controllers_Widget",
-				"actions" => array(
-					"action" => "hmwp_widget_securitycheck"
-				),
-			),
-			array(
-				"name"    => "HMWP_Controllers_Connect",
-				"actions" => array(
-					"action" => array(
-						"hmwp_connect",
-						"hmwp_reconnect",
-						"hmwp_dont_connect",
-					)
-				),
-			),
-			array(
-				"name"    => "HMWP_Classes_Error",
-				"actions" => array(
-					"action" => array(
-						"hmwp_ignoreerror"
-					)
-				),
-			),
-		);
+                return array(
+                        array(
+                                "name"    => "HMWP_Controllers_Settings",
+                                "actions" => array(
+                                        "action" => array(
+                                                "hmwp_settings",
+                                                "hmwp_tweakssettings",
+                                                "hmwp_confirm",
+                                                "hmwp_abort",
+                                                "hmwp_ignore_errors",
+                                                "hmwp_restore_settings",
+                                                "hmwp_manualrewrite",
+                                        )
+                                ),
+                        ),
+                );
 	}
 
 
