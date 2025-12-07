@@ -1124,18 +1124,13 @@ class HMWP_Classes_Tools {
 	 */
 	public static function hmwp_remote_get( $url, $params = array(), $options = array() ) {
 
-		$parameters = '';
-		if ( ! empty( $params ) ) {
-			foreach ( $params as $key => $value ) {
-				if ( $key <> '' ) {
-					$parameters .= ( $parameters == "" ? "" : "&" ) . $key . "=" . $value;
-				}
-			}
+                if ( ! empty( $params ) ) {
+                        $query = http_build_query( $params, '', '&', PHP_QUERY_RFC3986 );
 
-			if ( $parameters <> '' ) {
-				$url .= ( ( strpos( $url, "?" ) === false ) ? "?" : "&" ) . $parameters;
-			}
-		}
+                        if ( $query !== '' ) {
+                                $url .= ( strpos( $url, '?' ) === false ? '?' : '&' ) . $query;
+                        }
+                }
 
 		$response = self::hmwp_wpcall( $url, $params, $options );
 
