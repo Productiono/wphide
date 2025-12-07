@@ -62,7 +62,7 @@ class HMWP_Classes_Action extends HMWP_Classes_FrontController {
 	 * @return array
 	 * @since 6.1.1
 	 */
-	public function getActionsTable() {
+        public function getActionsTable() {
                 return array(
                         array(
                                 "name"    => "HMWP_Controllers_Settings",
@@ -78,8 +78,18 @@ class HMWP_Classes_Action extends HMWP_Classes_FrontController {
                                         )
                                 ),
                         ),
+                        array(
+                                "name"    => "HMWP_Controllers_Connect",
+                                "actions" => array(
+                                        "action" => array(
+                                                "hmwp_connect",
+                                                "hmwp_reconnect",
+                                                "hmwp_dont_connect",
+                                        )
+                                ),
+                        ),
                 );
-	}
+        }
 
 
 	/**
